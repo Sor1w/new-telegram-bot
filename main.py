@@ -14,4 +14,16 @@ def send_hello(message):
 
 @bot.message_handler(commands=['bye'])
 def send_bye(message):
-    bot.reply_to(message, "Пока! Удачи!")
+    bot.reply_to(message, "Пока! Удачи!"
+
+@bot.message_handler(commands=["ping"])
+def on_ping(message):
+    bot.reply_to(message, "Still alive and kicking!")
+
+ # Обработчик команды '/heh'
+@bot.message_handler(commands=['heh'])
+def send_heh(message):
+    count_heh = int(message.text.split()[1]) if len(message.text.split()) > 1 else 5
+    bot.reply_to(message, "he" * count_heh)
+    
+bot.polling()                 
